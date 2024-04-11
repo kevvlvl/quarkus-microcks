@@ -41,7 +41,14 @@ quarkus:
         primaries: openapi/*-openapi.yaml
 ```
 
-## Run
+## Ensure Testcontainers finds your docker socket (when not using Docker)
+
+For those using Podman, Rancher, etc., ensure the docker socket is available at the expected path:
+
+In my case with Rancher Desktop, my socket is in my home directory, so I create a soft link to /var/run/docker.sock
+```
+sudo ln -s $HOME/.rd/docker.sock /var/run/docker.sock
+```
 
 Start Quarkus using:
 ```
