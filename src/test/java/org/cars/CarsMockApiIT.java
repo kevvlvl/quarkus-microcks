@@ -1,11 +1,14 @@
 package org.cars;
 
 import io.quarkus.test.junit.QuarkusTest;
-import org.apache.http.HttpStatus;
+import io.restassured.http.ContentType;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.CoreMatchers.is;
 
 @QuarkusTest
 public class CarsMockApiIT {
@@ -14,15 +17,22 @@ public class CarsMockApiIT {
     String microcksContainerUrl;
 
     /**
-     * Test the a mocked API loaded in Microcks using its open api contract.
-     * This can be used to mock dependencies instead of injecting and managing mocks programmatically
+     * Test the mocked API loaded in Microcks using its open api contract.
+     * This is to show how we can write tests to call mocked services using their openapi contracts to perform integration testing
      */
     @Test
-    public void testMockedCarApi() {
+    public void testMockedCarApi() throws IOException, InterruptedException {
 
         given()
-                .when().get(microcksContainerUrl + "/rest/OpenAPI+Car+API/1.0.0/owner/kevv/car")
+                .log().all()
+                .pathParams("owner", "kev")
+                .urlEncodingEnabled(false)
+                .accept(ContentType.JSON)
+                .when().get(microcksContainerUrl + "/rest/OpenAPI+Car+API/1.0.0/owner/{owner}/car")
                 .then()
-                .statusCode(HttpStatus.SC_OK);
+                .assertThat()
+                .statusCode(is(200))
+                .and()
+                .contentType(ContentType.JSON);
     }
 }

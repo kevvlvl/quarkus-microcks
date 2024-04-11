@@ -25,7 +25,7 @@ paths:
         schema:
           type: integer
         examples:
-          laurent_cars:
+          kevv_cars:
             value: 0
       - name: limit
         in: query
@@ -34,7 +34,7 @@ paths:
         schema:
           type: integer
         examples:
-          laurent_cars:
+          kevv_cars:
             value: 20
       responses:
         200:
@@ -46,7 +46,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/Car'
               examples:
-                laurent_cars:
+                kevv_cars:
                   value: |-
                     [
                         {"name": "307", "model": "Peugeot 307", "year": 2003},
@@ -63,7 +63,7 @@ paths:
             schema:
               $ref: '#/components/schemas/Car'
             examples:
-              laurent_307:
+              kevv_307:
                 summary: Creation of a valid car
                 description: Should return 201
                 value: '{"name": "307", "model": "Peugeot 307", "year": 2003}'
@@ -76,7 +76,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Car'
               examples:
-                laurent_307:
+                kevv_307:
                   summary: Creation of a valid car response
                   value: '{"name": "307", "model": "Peugeot 307", "year": 2003}'
         400: {}
@@ -89,11 +89,11 @@ paths:
         format: string
         type: string
       examples:
-        laurent_cars:
-          summary: Value for laurent related examples
-          value: laurent
-        laurent_307:
-          $ref: '#/components/examples/param_laurent'
+        kevv_cars:
+          summary: Value for kev related examples
+          value: kev
+        kevv_307:
+          $ref: '#/components/examples/param_kevv'
   /owner/{owner}/car/{car}/passenger:
     post:
       summary: Add some passengers to the car
@@ -132,8 +132,8 @@ components:
           description: Model of the car
           type: string
   examples:
-    param_laurent:
-      value: laurent
+    param_kevv:
+      value: kev
 tags:
 - name: car
-  description:
+  description: It's a car
