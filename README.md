@@ -73,4 +73,4 @@ Press [e] to edit command line args (currently ''), [r] to resume testing, [o] T
 
 You can access Microcks by finding the URL in the Quarkus dev services portal:  `http://localhost:8080/q/dev-ui` under `Dev Services`. In my case in the current iteration, it's `http://localhost:32796` (ports are randomized)
 
-In Microcks under `API | Services`, the imported openapi contract `OpenAPI Car API - 1.0.0`. This OpenAPI is used in tests where we want to mock another API using its openapi specification.
+In Microcks under `API | Services`, the imported openapi contract `Greetings Service - 0.0.2`. This OpenAPI is used for contract testing our API using the openapi as the source of truth
