@@ -19,6 +19,9 @@ class GreetingsResourcesContractIT {
     @ConfigProperty(name= "quarkus.microcks.default.http")
     String microcksContainerUrl;
 
+    /**
+     * Test the API itself by using the openapi contract as the source of truth
+     */
     @Test
     void testGreetingsOpenApiContactTest() throws Exception {
 
