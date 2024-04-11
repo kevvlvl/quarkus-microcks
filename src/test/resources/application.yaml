@@ -1,0 +1,5 @@
+quarkus:
+  microcks:
+    devservices:
+      artifacts:
+        primaries: openapi/*-openapi.yaml

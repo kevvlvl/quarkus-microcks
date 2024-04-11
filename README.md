@@ -20,13 +20,25 @@ Now, we include Microcks
 
 ### Include Microcks dependency:
 
-```
+```xml
 <dependency>
   <groupId>io.github.microcks.quarkus</groupId>
   <artifactId>quarkus-microcks</artifactId>
   <version>0.2.3</version>
   <scope>provided</scope>
 </dependency>
+```
+
+### Import OpenAPIs for mocking or contract testing
+
+Under `src/test/resources`, you can list all openapi, grpc, postman, soapui (all files understood by microcks) to be imported. I import openapis using the following application config:
+
+```yaml
+quarkus:
+  microcks:
+    devservices:
+      artifacts:
+        primaries: openapi/*-openapi.yaml
 ```
 
 ## Run
@@ -38,7 +50,7 @@ quarkus dev
 
 You will be asked to run tests with the following prompt. hit `r` to run tests which will trigger the downloading of container images to enable testcontainers to spin microcks (among other images)
 
-```
+```shell
 ...
 Press [e] to edit command line args (currently ''), [r] to resume testing, [o] Toggle test output, [:] for the terminal, [h] for more options>
 ...
@@ -59,4 +71,6 @@ Press [e] to edit command line args (currently ''), [r] to resume testing, [o] T
 ...
 ```
 
-You can access microcks at the following URL `http://localhost:32774`, or quarkus dev services at `http://localhost:8080/q/dev-ui`
+You can access Microcks by finding the URL in the Quarkus dev services portal:  `http://localhost:8080/q/dev-ui` under `Dev Services`. In my case in the current iteration, it's `http://localhost:32796` (ports are randomized)
+
+In Microcks under `API | Services`, the imported openapi contract `OpenAPI Car API - 1.0.0`. This OpenAPI is used in tests where we want to mock another API using its openapi specification.

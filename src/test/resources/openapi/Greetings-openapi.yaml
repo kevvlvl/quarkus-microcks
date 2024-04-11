@@ -1,0 +1,47 @@
+openapi: 3.0.2
+info:
+  title: Greetings Service
+  version: 0.0.2
+  description: API definition of the Greetings Quarkus Api
+  contact:
+    name: Kevork Sayad
+    url: http://github.com/kevvlvl
+  license:
+    name: MIT License
+    url: https://opensource.org/licenses/MIT
+paths:
+  /hello:
+    summary: Hello World from the Greetings API
+    get:
+      tags:
+        - hello
+      responses:
+        "200":
+          description: Get the Greetings response from the API
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Greetings'
+              examples:
+                greetings:
+                  value:
+                    message: Greetings and salutations from kevv
+                    currentDate: 2024-04-10T23:07:57.20953448
+tags:
+  - name: hello
+    description: Hello World endpoints
+components:
+  schemas:
+    Greetings:
+      description: Greetings API
+      required:
+        - message
+        - currentDate
+      type: object
+      properties:
+        message:
+          description: the string containing the hello!
+          type: string
+        currentDate:
+          description: the current local date time returned with local timezone
+          type: string

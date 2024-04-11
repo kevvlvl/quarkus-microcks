@@ -16,6 +16,7 @@
         <skipITs>true</skipITs>
         <surefire-plugin.version>3.2.5</surefire-plugin.version>
         <quarkus-microcks.version>0.2.3</quarkus-microcks.version>
+        <assertj-core.version>3.25.3</assertj-core.version>
     </properties>
 
     <dependencyManagement>
@@ -41,6 +42,11 @@
         </dependency>
 
         <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-rest-jsonb</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>io.github.microcks.quarkus</groupId>
             <artifactId>quarkus-microcks</artifactId>
             <version>${quarkus-microcks.version}</version>
@@ -57,6 +63,16 @@
             <artifactId>rest-assured</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj-core.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+
     </dependencies>
 
     <build>
